@@ -1,0 +1,207 @@
+.header {
+  max-width: 1920px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__first-block {
+    max-width: 1372px;
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    padding: 14px 0;
+  }
+
+  &__second-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 60px 20px 0;
+    max-width: 1920px;
+    width: 100%;
+    border-top: 1px solid #d5d5d5;
+    border-bottom: 1px solid #d5d5d5;
+  }
+
+  &__info {
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+    border-right: 1px dashed #ababab;
+  }
+
+  &__text {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 130.02%;
+  }
+
+  &__bottom-text {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 130.02%;
+    color: #3F4E65;
+  }
+
+  .mail {
+    border: none;
+    padding-left: 50px;
+
+    &::before {
+      height: 20px;
+      width: 20px;
+      position: absolute;
+      margin-left: -30px;
+      margin-top: 10px;
+      content: url("../../images/png/fluent_mail-24-regular.png");
+    }
+  }
+
+  .location::before {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    margin-left: -30px;
+    margin-top: 10px;
+    content: url("../../images/png/akar-icons_location.png");
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    column-gap: 30px;
+
+    &__text {
+      padding: 5px 30px 5px 0;
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      color: #3F4E65;
+    }
+
+    .border {
+      border-right: 1px dashed #ababab;
+    }
+  }
+
+  .block-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .white {
+    color: white;
+  }
+
+  .yellow-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 59px;
+    padding: 10px 54px;
+    border-radius: 79px;
+    background-color: #FFC85E;
+    gap: 12px;
+  }
+
+
+  .btn-border {
+    border-left: 1px dashed #d5d5d5;
+    border-right: 1px dashed #d5d5d5;
+    padding: 0 25px;
+  }
+
+  .contacts-block {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+
+
+  .logo-padding {
+    padding-right: 38px;
+  }
+
+  .header-padding {
+    padding: 0 25px 0 14px;
+  }
+
+  .cart-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 24px;
+    padding-left: 25px;
+  }
+
+  .cart {
+    height: 46px;
+    width: 46px;
+    background-image: url("../../images/png/simple-line-icons_basket.png");
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .cart::after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 22px;
+    margin-left: 30px;
+    border: 3px solid white;
+    width: 22px;
+    border-radius: 50px;
+    background-color: #FFC85E;
+    content: '3';
+  }
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 59px;
+  padding: 10px 0;
+  border-radius: 79px;
+  background-color: #EDEDED;
+  max-width: 263px;
+  width: 100%;
+  margin: 0 35px 0 15px;
+
+  &__text {
+    padding-left: 20px;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #5C6370;
+  }
+}
+
+.search-logo {
+  margin-right: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  background-color: #FFC85E;
+  background-image: url("../../images/png/akar-icons_search.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}

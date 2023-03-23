@@ -1,0 +1,22 @@
+.footer {
+  max-width: 1920px;
+  height: 500px;
+  background-color: #3F4E65;
+  padding-top: 70px;
+
+  &__logo-block {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    width: 100%;
+  }
+
+  &__text {
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #FFFFFF;
+  }
+}
