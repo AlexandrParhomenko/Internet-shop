@@ -105,17 +105,6 @@
     color: white;
   }
 
-  .yellow-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 59px;
-    padding: 10px 54px;
-    border-radius: 79px;
-    background-color: #FFC85E;
-    gap: 12px;
-  }
-
 
   .btn-border {
     border-left: 1px dashed #d5d5d5;
@@ -204,4 +193,15 @@
   background-image: url("../../images/png/akar-icons_search.png");
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.yellow-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 59px;
+  padding: 10px 54px;
+  border-radius: 79px;
+  background-color: #FFC85E;
+  gap: 12px;
 }

@@ -1,0 +1,96 @@
+{
+  "products": {
+      "items": [
+        {
+          "img": "image21",
+          "manufacturer": "Нэфис",
+          "weight": "450 мл",
+          "name": "AOS средство для мытья посуды Crystal",
+          "code": "4604049097548",
+          "brand": "AOS",
+          "price": "101 ₸"
+        },
+        {
+          "img": "image22",
+          "manufacturer": "Fairy",
+          "weight": "15X28.8 г",
+          "name": "AOS средство для мытья посуды Crystal",
+          "code": "4604049097548",
+          "brand": "AOS",
+          "price": "53,20 ₸"
+        },
+        {
+          "img": "image22",
+          "manufacturer": "Grant",
+          "weight": "1500 г",
+          "name": "AOS средство для мытья посуды Crystal",
+          "code": "4604049097548",
+          "brand": "AOS",
+          "price": "48,76 ₸"
+        },
+        {
+          "img": "image22",
+          "manufacturer": "Mr.Proper",
+          "weight": "1500 г",
+          "name": "AOS средство для мытья посуды Crystal",
+          "code": "4604049097548",
+          "brand": "AOS",
+          "price": "148, 70 ₸"
+        },
+        {
+          "img": "image22",
+          "manufacturer": "Чистюля",
+          "weight": "1500 г",
+          "name": "AOS средство для мытья посуды Crystal",
+          "code": "4604049097548",
+          "brand": "AOS",
+          "price": "48,76 ₸"
+        },
+        {
+          "img": "image22",
+          "manufacturer": "Нэфис",
+          "weight": "1500 г",
+          "name": "AOS средство для мытья посуды Crystal",
+          "code": "4604049097548",
+          "brand": "AOS",
+          "price": "48,76 ₸"
+        },
+        {
+          "img": "image22",
+          "manufacturer": "Нэфис",
+          "weight": "1500 г",
+          "name": "AOS средство для мытья посуды Crystal",
+          "code": "4604049097548",
+          "brand": "AOS",
+          "price": "48,76 ₸"
+        },
+        {
+          "img": "image22",
+          "manufacturer": "Нэфис",
+          "weight": "1500 г",
+          "name": "AOS средство для мытья посуды Crystal",
+          "code": "4604049097548",
+          "brand": "AOS",
+          "price": "48,76 ₸"
+        },
+        {
+          "img": "image22",
+          "manufacturer": "Нэфис",
+          "weight": "1500 г",
+          "name": "AOS средство для мытья посуды Crystal",
+          "code": "4604049097548",
+          "brand": "AOS",
+          "price": "48,76 ₸"
+        },
+        {
+          "img": "image22",
+          "manufacturer": "Нэфис",
+          "weight": "1500 г",
+          "name": "AOS средство для мытья посуды Crystal",
+          "code": "4604049097548",
+          "brand": "AOS",
+          "price": "48,76 ₸"
+        }
+      ]
+    }
+}
