@@ -1,14 +1,23 @@
 import React from 'react';
-import {itemSlice, selectItemState, setItemState} from "@/store/storeItems";
+import {
+  itemSlice,
+  selectAmountItemState,
+  selectItemState,
+  setAmount,
+  setItemState
+} from "@/store/storeItems";
 import {useDispatch, useSelector} from "react-redux";
+import Link from "next/link";
 
 const Header = () => {
   const itemState = useSelector(selectItemState)
+  const amount = useSelector(selectAmountItemState)
   const dispatch = useDispatch()
 
   const countPrice = () => {
     const ans = 0
-    return itemState.reduce((acc, cur) => acc + parseFloat(cur.price.split(' ')[0].replace(',', '.')), ans).toFixed(2) + ' ₸'
+    console.log(amount)
+    return ((itemState.reduce((acc, cur, idx) => acc + (amount[idx] * parseFloat(cur.price.split(' ')[0].replace(',', '.'))), ans).toFixed(2)) || 0) + ' ₸'
   }
   return (
       <div className='header'>
@@ -54,7 +63,7 @@ const Header = () => {
             </div>
           </div>
           <div className='cart-wrapper'>
-            <div className='cart'></div>
+            <Link href='/cart'><div className='cart'></div></Link>
             <div className='cart-num header__text white'>{itemState.length}</div>
             <div className='cart__info'>
               <span className='header__bottom-text'>Корзина</span>

@@ -2,9 +2,10 @@ import Head from 'next/head'
 import Header from "@/components/header/Header";
 import Main from "@/components/main/Main";
 import Footer from "@/components/footer/Footer";
-import Link from "next/link";
 
 export default function Home() {
+
+
   return (
       <div>
         <Head>
@@ -14,7 +15,9 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico"/>
           <link rel="preconnect" href="https://fonts.googleapis.com"/>
           <link rel="preconnect" href="https://fonts.gstatic.com"/>
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+          <link
+              href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+              rel="stylesheet"/>
         </Head>
         <Header/>
         <Main/>

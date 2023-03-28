@@ -1,7 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import data from '../../data.json';
-import { selectItemState, setItemState } from "@/store/storeItems";
+import {
+  selectAmountItemState,
+  selectCurItemState,
+  selectItemState,
+  setCurItemState,
+  setItemState,
+  setAmount
+} from "@/store/storeItems";
 import {useDispatch, useSelector} from "react-redux";
+import Link from "next/link";
 
 
 const Main = () => {
@@ -14,11 +22,9 @@ const Main = () => {
   const [brandFilter, setBrandFilter] = useState<string[]>([])
   const [typeFilter, setTypeFilter] = useState<string[]>([])
   const [sortSelect, setSortSelect] = useState<number>(0)
-  const [itemAmount, setItemAmount] = useState<number>(1)
   const [itemsList, setItemsList] = useState<dataItem[]>([...data.products.items])
   const [page, setPage] = useState<number>(1)
   const [itemWindow, setItemWindow] = useState<boolean>(false);
-  const [cartWindow, setCartWindow] = useState<boolean>(false);
   const [currentItem, setCurrentItem] = useState<dataItem>(itemsList[0]);
   const headersArray: string[] = [
     'Уход за руками',
@@ -33,12 +39,14 @@ const Main = () => {
     'Бумажная продукция'
   ]
   const itemState = useSelector(selectItemState)
+  const amount = useSelector(selectAmountItemState)
   const dispatch = useDispatch()
 
   const getManufacturers = () => {
     let arr: string[] = data.products.items.map(el => el.manufacturer)
     return Array.from(new Set(arr))
   }
+
 
   const getBrands = () => {
     let arr: string[] = data.products.items.map(el => el.brand)
@@ -74,6 +82,7 @@ const Main = () => {
     setBrandFilter([])
     setBrandSearch('')
     setSortSelect(0)
+    setTypeFilter([])
   }
 
 
@@ -88,7 +97,6 @@ const Main = () => {
   }
 
   const cardWindowHandle = (el: dataItem) => {
-    console.log(123)
     setItemWindow(!itemWindow);
     setCurrentItem(el)
   }
@@ -149,7 +157,13 @@ const Main = () => {
                 </div>
                 <div></div>
                 <span className='weight-font'>{el.weight}</span>
-                <span onClick={() => cardWindowHandle(el)} className='main-text'>{el.name}</span>
+                <Link onClick={() => {
+                  dispatch(setCurItemState([el]))
+                }} as={`/${el.code}`} href={{
+                  pathname: '/cardPage',
+                  query: {a: JSON.stringify(currentItem)}
+                }}><span onClick={() => cardWindowHandle(el)}
+                         className='main-text'>{el.name}</span></Link>
                 <div>
                   <span className='weight-font name-font'>Штрихкод: </span>
                   <span className='description-font'>{el.code}</span>
@@ -164,7 +178,13 @@ const Main = () => {
                 </div>
                 <div className='price-wrapper'>
                   <span className='main-text price-font'>{el.price}</span>
-                  <div className='cart-btn'>в корзину</div>
+                  <div onClick={() => {
+                    dispatch(setItemState([...itemState, el]))
+                    dispatch(setAmount([...amount, 1]))
+                  }}
+                       className={itemState.some(ele => ele.code === el.code) ? 'cart-btn active-cart' : 'cart-btn'}>
+                    {itemState.some(ele => ele.code === el.code) ? 'в корзине' : 'в корзину'}
+                  </div>
                 </div>
               </div>
             }
@@ -178,7 +198,13 @@ const Main = () => {
             <img src={`/${el.img}.png`} alt='img'/>
           </div>
           <span className='weight-font'>{el.weight}</span>
-          <span onClick={() => cardWindowHandle(el)} className='main-text'>{el.name}</span>
+          <Link onClick={() => {
+            dispatch(setCurItemState([el]))
+          }} as={`/${el.code}`} href={{
+            pathname: '/cardPage',
+            query: {a: JSON.stringify(currentItem)}
+          }}><span onClick={() => cardWindowHandle(el)}
+                   className='main-text'>{el.name}</span></Link>
           <div>
             <span className='weight-font name-font'>Штрихкод: </span>
             <span className='description-font'>{el.code}</span>
@@ -193,9 +219,12 @@ const Main = () => {
           </div>
           <div className='price-wrapper'>
             <span className='main-text price-font'>{el.price}</span>
-            <div onClick={() => {dispatch(setItemState([...itemState, el]))}}
-                 className={itemState.some(ele => ele.code === el.code) ?  'cart-btn active-cart' : 'cart-btn'}>
-              {itemState.some(ele => ele.code === el.code) ?  'в корзине' : 'в корзину'}
+            <div onClick={() => {
+              dispatch(setItemState([...itemState, el]))
+              dispatch(setAmount([...amount, 1]))
+            }}
+                 className={itemState.some(ele => ele.code === el.code) ? 'cart-btn active-cart' : 'cart-btn'}>
+              {itemState.some(ele => ele.code === el.code) ? 'в корзине' : 'в корзину'}
             </div>
           </div>
         </div>
@@ -204,139 +233,86 @@ const Main = () => {
 
   return (
       <div className='main'>
-        {!itemWindow ? <div className='main__nav'>
+        <div className='main__nav'>
           <span className='main__top-font dots'>Главная</span>
           <span className='main__top-font grey'>Косметика и гигиена</span>
-        </div> :
-            <div className='main__nav'>
-              <span onClick={() => setItemWindow(!itemWindow)} className='main__top-font dots'>Главная</span>
-              <span onClick={() => setItemWindow(!itemWindow)} className='main__top-font dots'>Каталог</span>
-              <span className='main__top-font grey'>{currentItem.name}</span>
-            </div>}
-
-        {!itemWindow ? <div className='main__content'>
-              <div className='sort-wrapper'>
-                <span className='main__content__title'>Косметика и гигиена</span>
-                <div>
-                  <span className='sort-font'>Сортировка: </span>
-                  <select onChange={(e) => setSortSelect(parseInt(e.target.value))} className='select'>
-                    <option value='0'>По названию(А-Я)</option>
-                    <option value='1'>По названию(Я-А)</option>
-                    <option value='2'>Сначала дорогие</option>
-                    <option value='3'>Сначала недорогие</option>
-                  </select>
+        </div>
+        <div className='main__content'>
+          <div className='sort-wrapper'>
+            <span className='main__content__title'>Косметика и гигиена</span>
+            <div>
+              <span className='sort-font'>Сортировка: </span>
+              <select onChange={(e) => setSortSelect(parseInt(e.target.value))} className='select'>
+                <option value='0'>По названию(А-Я)</option>
+                <option value='1'>По названию(Я-А)</option>
+                <option value='2'>Сначала дорогие</option>
+                <option value='3'>Сначала недорогие</option>
+              </select>
+            </div>
+          </div>
+          <div className='sort-types'>
+            {headersArray.map((el, idx) => <div key={idx} onClick={() => activeHandler(el)}
+                                                className={typeFilter.indexOf(el) !== -1 ? 'sort-types__item weight-font name-font active' : 'sort-types__item weight-font name-font'}>{el}</div>)}
+          </div>
+          <div className='shop-items'>
+            <div className='aside-filters'>
+              <div className='price-filter'>
+                <span className='aside-filters__title'>ПОДБОР ПО ПАРАМЕТРАМ</span>
+                <span>Цена ₸</span>
+                <div className='input-wrapper'>
+                  <input value={minPrice}
+                         onChange={(e) => setMinPrice(parseInt(e.target.value) || 0)}
+                         className='input' type='text'/>
+                  <span>-</span>
+                  <input value={maxPrice}
+                         onChange={(e) => setMaxPrice(parseInt(e.target.value) || 0)}
+                         className='input' type='text'/>
                 </div>
               </div>
-              <div className='sort-types'>
-                {headersArray.map((el, idx) => <div key={idx} onClick={() => activeHandler(el)}
-                                                    className={typeFilter.indexOf(el) !== -1 ? 'sort-types__item weight-font name-font active' : 'sort-types__item weight-font name-font'}>{el}</div>)}
-              </div>
-              <div className='shop-items'>
-                <div className='aside-filters'>
-                  <div className='price-filter'>
-                    <span className='aside-filters__title'>ПОДБОР ПО ПАРАМЕТРАМ</span>
-                    <span>Цена ₸</span>
-                    <div className='input-wrapper'>
-                      <input value={minPrice}
-                             onChange={(e) => setMinPrice(parseInt(e.target.value) || 0)}
-                             className='input' type='text'/>
-                      <span>-</span>
-                      <input value={maxPrice}
-                             onChange={(e) => setMaxPrice(parseInt(e.target.value) || 0)}
-                             className='input' type='text'/>
-                    </div>
-                  </div>
-                  <div>
-                    <span className='aside-filters__title'>Производитель</span>
-                    <div style={{margin: 0}} className='search-bar'>
-                      <input type='text' value={manuSearch}
-                             onChange={(e) => setManuSearch(e.target.value)} placeholder='Поиск...'
-                             className='search-bar__text search-input'/>
-                      <div className='search-logo'></div>
-                    </div>
-                    <div className='checkbox-container'>
-                      {searchHandle()}
-                    </div>
-                  </div>
-                  <div>
-                    <span className='aside-filters__title'>Бренд</span>
-                    <div style={{margin: 0}} className='search-bar'>
-                      <input type='text' value={brandSearch}
-                             onChange={(e) => setBrandSearch(e.target.value)} placeholder='Поиск...'
-                             className='search-bar__text search-input'/>
-                      <div className='search-logo'></div>
-                    </div>
-                    <div className='checkbox-container'>
-                      {searchBrandsHandle()}
-                    </div>
-                  </div>
-                  <div className='filters-block'>
-                    <div onClick={() => setShowFilter(true)} className='yellow-btn'>
-                      <span className='footer__text'>Показать</span>
-                    </div>
-                    <div onClick={() => removeFilters()} className='delete-block'></div>
-                  </div>
-                  {headersArray.map((el, idx) => <div key={idx} onClick={() => activeHandler(el)}
-                                                      className={typeFilter.indexOf(el) !== -1 ? 'aside-filters__header active' : 'aside-filters__header'}>{el}</div>)}
+              <div>
+                <span className='aside-filters__title'>Производитель</span>
+                <div style={{margin: 0}} className='search-bar'>
+                  <input type='text' value={manuSearch}
+                         onChange={(e) => setManuSearch(e.target.value)} placeholder='Поиск...'
+                         className='search-bar__text search-input'/>
+                  <div className='search-logo'></div>
                 </div>
-                <div className='shop-items__container'>
-                  {filterHandle()}
+                <div className='checkbox-container'>
+                  {searchHandle()}
                 </div>
               </div>
-              <div className='pagination-wrapper'>
-                <span onClick={() => setPage(page !== 1 ? page - 1 : page)}>{'<'}</span>
-                <div className='page'>{page}</div>
-                <span
-                    onClick={() => setPage((page + 1) * 9 - 9 > itemsList.length ? page : page + 1)}>{'>'}</span>
-              </div>
-            </div> :
-            <div className='item-block'>
-              <img src={`/${currentItem.img}.png`} height='400' width='200' alt='img'/>
-              <div className='item-block__description'>
-                <span className='weight-font name-font green'>В наличии</span>
-                <span className='item-block__name'>{currentItem.name}</span>
-                <span className='weight-font'>{currentItem.weight}</span>
-                <div className='item-block__price'>
-                  <span className='item-block__name'>{currentItem.price}</span>
-                  <div className='amount-wrapper'>
-                    <div onClick={() => itemAmount != 1 ? setItemAmount(itemAmount - 1) : ''} className='amount'>-</div>
-                    <span>{itemAmount}</span>
-                    <div onClick={() => setItemAmount(itemAmount + 1)} className='amount'>+</div>
-                  </div>
-                  <div onClick={() => {
-                    dispatch(setItemState([...itemState, currentItem]))
-                    setItemWindow(false)
-                  }} className={itemState.some(ele => ele.code === currentItem.code) ?  'yellow-btn header__text white cart-img active-cart' : 'yellow-btn header__text white cart-img'}>
-                    {itemState.some(ele => ele.code === currentItem.code) ?  'В корзине' : 'В корзину'}
-                  </div>
-
+              <div>
+                <span className='aside-filters__title'>Бренд</span>
+                <div style={{margin: 0}} className='search-bar'>
+                  <input type='text' value={brandSearch}
+                         onChange={(e) => setBrandSearch(e.target.value)} placeholder='Поиск...'
+                         className='search-bar__text search-input'/>
+                  <div className='search-logo'></div>
                 </div>
-                <div className='amount-wrapper'>
-                  <img className='white-btn' src='/ci_share.png' alt='img'/>
-                  <div className='white-btn weight-font blue'>При покупке от <b>10 000 ₸</b> бесплатная<br/> доставка по Кокчетаву и области</div>
-                  <div className='white-btn center'>
-                    <span className='header__text'><b>Прайс-лист</b></span>
-                    <img src='/downloaddark.png' alt='frame'/>
-                  </div>
-                </div>
-                <div>
-                  <span className='weight-font name-font'>Производитель: </span>
-                  <span className='description-font'><b>{currentItem.manufacturer}</b></span>
-                </div>
-                <div>
-                  <span className='weight-font name-font'>Бренд: </span>
-                  <span className='description-font'><b>{currentItem.brand}</b></span>
-                </div>
-                <div>
-                  <span className='weight-font name-font'>Штрихкод: </span>
-                  <span className='description-font'><b>{currentItem.code}</b></span>
-                </div>
-                <div>
-                  <span className='weight-font name-font'>Вес коробки: </span>
-                  <span className='description-font'><b>{currentItem.weight}</b></span>
+                <div className='checkbox-container'>
+                  {searchBrandsHandle()}
                 </div>
               </div>
-            </div>}
+              <div className='filters-block'>
+                <div onClick={() => setShowFilter(true)} className='yellow-btn'>
+                  <span className='footer__text'>Показать</span>
+                </div>
+                <div onClick={() => removeFilters()} className='delete-block'></div>
+              </div>
+              {headersArray.map((el, idx) => <div key={idx} onClick={() => activeHandler(el)}
+                                                  className={typeFilter.indexOf(el) !== -1 ? 'aside-filters__header active' : 'aside-filters__header'}>{el}</div>)}
+            </div>
+            <div className='shop-items__container'>
+              {filterHandle()}
+            </div>
+          </div>
+          <div className='pagination-wrapper'>
+            <span onClick={() => setPage(page !== 1 ? page - 1 : page)}>{'<'}</span>
+            <div className='page'>{page}</div>
+            <span
+                onClick={() => setPage((page + 1) * 9 - 9 > itemsList.length ? page : page + 1)}>{'>'}</span>
+          </div>
+        </div>
       </div>
   );
 };
