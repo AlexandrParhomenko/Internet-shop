@@ -132,11 +132,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    column-gap: 24px;
     padding-left: 25px;
   }
 
   .cart {
+    cursor: pointer;
     height: 46px;
     width: 46px;
     background-image: url("../../images/png/simple-line-icons_basket.png");
@@ -145,20 +145,21 @@
       display: flex;
       flex-direction: column;
     }
-  }
 
-  .cart::after {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    height: 22px;
-    margin-left: 30px;
-    border: 3px solid white;
-    width: 22px;
-    border-radius: 50px;
-    background-color: #FFC85E;
-    content: '3';
+    &-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      right: 19px;
+      top: -10px;
+      height: 25px;
+      border: 3px solid white;
+      width: 25px;
+      padding: 5px;
+      border-radius: 50px;
+      background-color: #FFC85E;
+    }
   }
 }
 

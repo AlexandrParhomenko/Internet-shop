@@ -1,6 +1,15 @@
 import React from 'react';
+import {itemSlice, selectItemState, setItemState} from "@/store/storeItems";
+import {useDispatch, useSelector} from "react-redux";
 
 const Header = () => {
+  const itemState = useSelector(selectItemState)
+  const dispatch = useDispatch()
+
+  const countPrice = () => {
+    const ans = 0
+    return itemState.reduce((acc, cur) => acc + parseFloat(cur.price.split(' ')[0].replace(',', '.')), ans).toFixed(2) + ' ₸'
+  }
   return (
       <div className='header'>
         <div className='header__first-block'>
@@ -45,10 +54,11 @@ const Header = () => {
             </div>
           </div>
           <div className='cart-wrapper'>
-            <div className='cart header__text white'></div>
+            <div className='cart'></div>
+            <div className='cart-num header__text white'>{itemState.length}</div>
             <div className='cart__info'>
               <span className='header__bottom-text'>Корзина</span>
-              <span className='header__text'>12 478 ₸</span>
+              <span className='header__text'>{countPrice()}</span>
             </div>
           </div>
         </div>

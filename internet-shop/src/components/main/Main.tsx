@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import data from '../../data.json';
-import {type} from "os";
+import { selectItemState, setItemState } from "@/store/storeItems";
+import {useDispatch, useSelector} from "react-redux";
 
 
 const Main = () => {
@@ -13,10 +14,11 @@ const Main = () => {
   const [brandFilter, setBrandFilter] = useState<string[]>([])
   const [typeFilter, setTypeFilter] = useState<string[]>([])
   const [sortSelect, setSortSelect] = useState<number>(0)
+  const [itemAmount, setItemAmount] = useState<number>(1)
   const [itemsList, setItemsList] = useState<dataItem[]>([...data.products.items])
-  const [filteredList, setFilteredList] = useState<dataItem[]>([])
   const [page, setPage] = useState<number>(1)
   const [itemWindow, setItemWindow] = useState<boolean>(false);
+  const [cartWindow, setCartWindow] = useState<boolean>(false);
   const [currentItem, setCurrentItem] = useState<dataItem>(itemsList[0]);
   const headersArray: string[] = [
     'Уход за руками',
@@ -30,17 +32,8 @@ const Main = () => {
     'Гигиена полости рта',
     'Бумажная продукция'
   ]
-
-  interface dataItem {
-    img: string;
-    manufacturer: string;
-    weight: string;
-    name: string;
-    code: string;
-    brand: string;
-    price: string;
-    careType: string[];
-  }
+  const itemState = useSelector(selectItemState)
+  const dispatch = useDispatch()
 
   const getManufacturers = () => {
     let arr: string[] = data.products.items.map(el => el.manufacturer)
@@ -146,7 +139,8 @@ const Main = () => {
           if ((manuFilter.indexOf(el.manufacturer) !== -1) ||
               (brandFilter.indexOf(el.brand) !== -1) ||
               (manuFilter.indexOf(el.manufacturer) !== -1 && brandFilter.length === 0) ||
-              (brandFilter.indexOf(el.brand) !== -1 && manuFilter.length === 0)) {
+              (brandFilter.indexOf(el.brand) !== -1 && manuFilter.length === 0) ||
+              (manuFilter.length === 0 && brandFilter.length === 0)) {
             t++
             if ((idx >= page * 9 - 9 && idx < page * 9 && t > 9) || (t < 9 && page === 1)) {
               return <div key={idx} className='shop-items__container__item'>
@@ -199,7 +193,10 @@ const Main = () => {
           </div>
           <div className='price-wrapper'>
             <span className='main-text price-font'>{el.price}</span>
-            <div className='cart-btn'>в корзину</div>
+            <div onClick={() => {dispatch(setItemState([...itemState, el]))}}
+                 className={itemState.some(ele => ele.code === el.code) ?  'cart-btn active-cart' : 'cart-btn'}>
+              {itemState.some(ele => ele.code === el.code) ?  'в корзине' : 'в корзину'}
+            </div>
           </div>
         </div>
     })
@@ -302,13 +299,15 @@ const Main = () => {
                 <div className='item-block__price'>
                   <span className='item-block__name'>{currentItem.price}</span>
                   <div className='amount-wrapper'>
-                    <div className='amount'>-</div>
-                    <span>1</span>
-                    <div className='amount'>+</div>
+                    <div onClick={() => itemAmount != 1 ? setItemAmount(itemAmount - 1) : ''} className='amount'>-</div>
+                    <span>{itemAmount}</span>
+                    <div onClick={() => setItemAmount(itemAmount + 1)} className='amount'>+</div>
                   </div>
-                  <div className='yellow-btn'>
-                    <span className='header__text white'>В корзину</span>
-                    <img src='/whitecart.png' alt='frame'/>
+                  <div onClick={() => {
+                    dispatch(setItemState([...itemState, currentItem]))
+                    setItemWindow(false)
+                  }} className={itemState.some(ele => ele.code === currentItem.code) ?  'yellow-btn header__text white cart-img active-cart' : 'yellow-btn header__text white cart-img'}>
+                    {itemState.some(ele => ele.code === currentItem.code) ?  'В корзине' : 'В корзину'}
                   </div>
 
                 </div>
