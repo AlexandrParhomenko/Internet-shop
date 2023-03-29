@@ -234,7 +234,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: 10px;
+  column-gap: 20px;
+
+}
+
+.arrow {
+  color: #FFC85E;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .page {
@@ -245,7 +253,7 @@
   height: 35px;
   width: 35px;
   border-radius: 50px;
-  background-color: #FFC85E;
+  background-color: #ffdb9c;
   font-size: 20px;
 }
 
@@ -456,6 +464,44 @@
   color: #111111;
 }
 
+.admin {
+  color: #8700ff;
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    max-width: 300px;
+    width: 100%;
+  }
+
+  &-list {
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 50px;
+  }
+
+
+}
+
+.select-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-container {
+  display: flex;
+  flex-direction: row;
+}
 
 
 
