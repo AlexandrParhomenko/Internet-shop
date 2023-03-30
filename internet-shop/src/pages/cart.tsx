@@ -6,6 +6,14 @@ import {selectAmountItemState, selectItemState, setAmount, setItemState} from "@
 import Link from "next/link";
 
 const Cart = () => {
+
+  if (process.browser) {
+    window.onbeforeunload = () => {
+      localStorage.setItem('amount', JSON.stringify(amount));
+      localStorage.setItem('itemState', JSON.stringify(itemState));
+    }
+  }
+
   const itemState = useSelector(selectItemState)
   const dispatch = useDispatch()
   const [orderComplete, setOrderComplete] = useState<boolean>(false)
@@ -29,6 +37,7 @@ const Cart = () => {
     if (itemState.length !== 0) {
       setOrderComplete(true);
       dispatch(setItemState([]))
+      dispatch(setAmount([]))
     }
   }
 
@@ -71,14 +80,17 @@ const Cart = () => {
                     <span className='main-text'>{amount[idx]}</span>
                     <div onClick={() => handleAmount(idx)} className='amount'>+</div>
                   </div>
-                  <span className='item-block__name'>{`${(amount[idx] * parseFloat(el.price.split(' ')[0].replace(',', '.'))).toFixed(2)} ₸`}</span>
+                  <span
+                      className='item-block__name'>{`${(amount[idx] * parseFloat(el.price.split(' ')[0].replace(',', '.'))).toFixed(2)} ₸`}</span>
                   <div onClick={() => handleDelete(idx)} className='page'>
                     <img src='/delete.png' alt='img'/>
                   </div>
                 </div>
               </div>)}
           <div className='order-wrapper'>
-            <div onClick={() => claimOrder()} className='yellow-btn header__text white'>Оформить заказ</div>
+            <div onClick={() => claimOrder()} className='yellow-btn header__text white'>Оформить
+              заказ
+            </div>
             <span className='item-block__name'>{countPrice()}</span>
           </div>
         </div> : <div className='order-ending-wrapper item-block__name'>Спасибо за заказ!</div>}

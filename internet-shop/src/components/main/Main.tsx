@@ -223,10 +223,7 @@ const Main = () => {
             t++
             if ((idx >= page * 9 - 9 && idx < page * 9 && t > 9) || (t < 9 && page === 1)) {
               return <div key={idx} className='shop-items__container__item'>
-                <div className='img-wrapper'>
-                  <img src={`/${el.img}.png`} alt='img'/>
-                </div>
-                <div></div>
+                <img className='img-wrapper' src={`/${el.img}.png`} alt='img'/>
                 <span className='weight-font'>{el.weight}</span>
                 <Link onClick={() => {
                   dispatch(setCurItemState([el]))
@@ -265,9 +262,7 @@ const Main = () => {
     }) : itemsList.sort(eval(setSort()!)).map((el, idx) => {
       if (idx >= page * 9 - 9 && idx < page * 9)
         return <div key={idx} className='shop-items__container__item'>
-          <div className='img-wrapper'>
-            <img src={`/${el.img}.png`} alt='img'/>
-          </div>
+          <img className='img-wrapper' src={`/${el.img}.png`} alt='img'/>
           <span className='weight-font'>{el.weight}</span>
           <Link onClick={() => {
             dispatch(setCurItemState([el]))
@@ -414,7 +409,7 @@ const Main = () => {
                   <div className='price-filter'>
                     <span className='aside-filters__title'>ПОДБОР ПО ПАРАМЕТРАМ</span>
                     <span onClick={() => setAdmin(true)} className='admin'>ADMIN MODE</span>
-                    <span>Цена ₸</span>
+                    <span className="aside-filters__title">Цена ₸</span>
                     <div className='input-wrapper'>
                       <input value={minPrice}
                              onChange={(e) => setMinPrice(parseInt(e.target.value) || 0)}
@@ -425,7 +420,7 @@ const Main = () => {
                              className='input' type='text'/>
                     </div>
                   </div>
-                  <div>
+                  <div className='filters-container'>
                     <span className='aside-filters__title'>Производитель</span>
                     <div style={{margin: 0}} className='search-bar'>
                       <input type='text' value={manuSearch}

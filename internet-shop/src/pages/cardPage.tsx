@@ -23,13 +23,14 @@ const CardPage = () => {
       <div>
       <Header/>
         <div className='main__nav margin'>
-          <Link href='/'><span className='main__top-font dots'>Главная</span></Link>
-          <span className='main__top-font dots'>Каталог</span>
-          <span className='main__top-font grey'>{curItemState[0].name}</span>
+          <Link href='/'><span className='main__top-font dots navigation'>Главная</span></Link>
+          <Link href='/'><span className='bold-text '>{`< Назад`}</span></Link>
+          <span className='main__top-font dots navigation'>Каталог</span>
+          <span className='main__top-font grey navigation'>{curItemState[0].name}</span>
         </div>
         <div className='item-block'>
 
-          <img src={`/${curItemState[0].img}.png`} alt='img'/>
+          <img className='img' src={`/${curItemState[0].img}.png`} alt='img'/>
           <div className='item-block__description'>
             <span className='weight-font name-font green'>В наличии</span>
             <span className='item-block__name'>{curItemState[0].name}</span>
@@ -49,8 +50,8 @@ const CardPage = () => {
               </div>
 
             </div>
-            <div className='amount-wrapper'>
-              <img className='white-btn' src='/ci_share.png' alt='img'/>
+            <div className='amount-wrapper cons'>
+              <img className='white-btn navigation' src='/ci_share.png' alt='img'/>
               <div className='white-btn weight-font blue'>При покупке от <b>10 000 ₸</b> бесплатная<br/> доставка по Кокчетаву и области</div>
               <div className='white-btn center'>
                 <span className='header__text'><b>Прайс-лист</b></span>

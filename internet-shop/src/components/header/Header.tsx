@@ -41,35 +41,40 @@ const Header = () => {
           </nav>
         </div>
         <div className='header__second-block'>
-          <img className='logo-padding' src='/sultan.png' alt='sultan'/>
-          <div className='yellow-btn'>
-            <span className='header__text white'>Каталог</span>
-            <img src='/Frame%20125.png' alt='frame'/>
-          </div>
-          <div className='search-bar'>
-            <span className='search-bar__text'>Поиск...</span>
-            <div className='search-logo'></div>
-          </div>
-          <div className='contacts-block'>
-            <span className='header__text'>+7 (777) 490-00-91</span>
-            <span className='header__bottom-text'>время работы: 9:00-20:00</span>
-            <span className='header__bottom-text'>Заказать звонок</span>
-          </div>
-          <img className='header-padding' src='/Group%20100.png' alt='contact'/>
-          <div className='btn-border'>
+          <div className='header__second-block__container'>
+            <img className='logo-padding' src='/sultan.png' alt='sultan'/>
             <div className='yellow-btn'>
-              <span className='header__text white'>Прайс-лист</span>
-              <img src='/bx_bxs-download.png' alt='frame'/>
+              <span className='header__text white'>Каталог</span>
+              <img src='/Frame%20125.png' alt='frame'/>
+            </div>
+            <div className='search-bar'>
+              <span className='search-bar__text'>Поиск...</span>
+              <div className='search-logo'></div>
             </div>
           </div>
-          <div className='cart-wrapper'>
-            <Link href='/cart'><div className='cart'></div></Link>
-            <div className='cart-num header__text white'>{itemState.length}</div>
-            <div className='cart__info'>
-              <span className='header__bottom-text'>Корзина</span>
-              <span className='header__text'>{countPrice()}</span>
+          <div className='header__second-block__container'>
+            <div className='contacts-block'>
+              <span className='header__text'>+7 (777) 490-00-91</span>
+              <span className='header__bottom-text'>время работы: 9:00-20:00</span>
+              <span className='header__bottom-text'>Заказать звонок</span>
+            </div>
+            <img className='header-padding' src='/Group%20100.png' alt='contact'/>
+            <div className='btn-border'>
+              <div className='yellow-btn'>
+                <span className='header__text white'>Прайс-лист</span>
+                <img src='/bx_bxs-download.png' alt='frame'/>
+              </div>
+            </div>
+            <div className='cart-wrapper'>
+              <Link href='/cart'><div className='cart'></div></Link>
+              <div className='cart-num header__text white'>{itemState.length}</div>
+              <div className='cart__info'>
+                <span className='header__bottom-text'>Корзина</span>
+                <span className='header__text'>{countPrice()}</span>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
   );

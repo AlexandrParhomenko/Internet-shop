@@ -24,6 +24,12 @@
     width: 100%;
     border-top: 1px solid #d5d5d5;
     border-bottom: 1px solid #d5d5d5;
+
+    &__container {
+      display: flex ;
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   &__info {
@@ -140,6 +146,7 @@
     height: 46px;
     width: 46px;
     background-image: url("../../images/png/simple-line-icons_basket.png");
+    background-size: contain;
 
     &__info {
       display: flex;
@@ -205,4 +212,91 @@
   border-radius: 79px;
   background-color: #FFC85E;
   gap: 12px;
+}
+
+@media (max-width: 1900px) {
+  .header__first-block {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15px;
+  }
+
+  .header__second-block {
+    flex-direction: column;
+  }
+
+  .search-bar {
+    max-width: 260px;
+    margin-right: 10px;
+  }
+
+  .sort-types {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+
+
+}
+
+@media (max-width: 600px) {
+  .header {
+
+
+    .yellow-btn {
+      display: none;
+    }
+
+    .search-bar {
+      display: none;
+    }
+    .logo-padding {
+      width: 120px;
+    }
+
+    .btn-border {
+      display: none;
+    }
+
+    &__first-block {
+      display: none;
+    }
+
+    .block-wrapper {
+      flex-direction: column;
+    }
+
+    .contacts-block {
+      display: none;
+    }
+
+    .header-padding {
+      display: none;
+    }
+
+    .cart__info {
+      display: none;
+    }
+
+    .nav {
+      flex-direction: column;
+    }
+
+    .cart {
+      height: 36px;
+      width: 36px;
+    }
+
+    &__second-block {
+
+      flex-direction: row;
+      padding: 10px;
+      align-items: center;
+      justify-content: center;
+
+      &__container {
+        flex-direction: column;
+      }
+    }
+  }
 }
