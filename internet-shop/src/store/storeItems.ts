@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AppState } from "./store";
 import { HYDRATE } from "next-redux-wrapper";
+import data from "../data.json"
 
 export interface CartItem {
   cartItem: dataItem[];
@@ -10,7 +11,7 @@ export interface CartItem {
 
 const initialState: CartItem = {
   cartItem: [],
-  curCartItem: [],
+  curCartItem: [data.products.items[0]],
   amount: []
 };
 
