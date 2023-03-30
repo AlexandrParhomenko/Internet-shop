@@ -5,6 +5,10 @@ import {useSelector, useDispatch} from "react-redux";
 import {selectAmountItemState, selectItemState, setAmount, setItemState} from "@/store/storeItems";
 import Link from "next/link";
 import del from '../images/png/delete.png'
+import image21 from '../images/png/image21.png'
+import image22 from '../images/png/image22.png'
+import image3 from '../images/png/image3.png'
+import Image from "next/image";
 
 const Cart = () => {
   const path = '../images/png/'
@@ -68,7 +72,9 @@ const Cart = () => {
           {itemState.map((el, idx) =>
               <div key={idx} className='cart-wrap__item'>
                 <div style={{width: 200, display: 'flex', justifyContent: 'center'}}>
-                  <img src={`/${el.img}.png`} alt='img'/>
+                  <Image src={el.img === `image21`
+                      ? image21 : el.img === `image22`
+                          ? image22 : image3} alt='img'/>
                 </div>
                 <div className='cart-name'>
                   <span className='weight-font'>{el.weight}</span>
