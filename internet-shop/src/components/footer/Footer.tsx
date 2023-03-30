@@ -5,7 +5,7 @@ const Footer = () => {
       <div className='footer'>
         <div className='footer__logo-block'>
           <img src='/sultanwhite.png' height='66' width='156' alt='sultan'/>
-          <span style={{paddingTop: '15px', paddingBottom: '45px'}} className='footer__text'>Компания «Султан» — снабжаем розничные магазины товарами<br/> "под ключ" в Кокчетаве и Акмолинской области</span>
+          <span style={{paddingTop: '15px', paddingBottom: '45px'}} className='footer__text'>{`Компания «Султан» — снабжаем розничные магазины товарами<br/> "под ключ" в Кокчетаве и Акмолинской области`}</span>
           <span style={{paddingBottom: '15px'}} className='footer__text small'>Подпишись на скидки и акции</span>
           <div className='email-wrapper'>
             <div>Введите ваш E-mail</div>

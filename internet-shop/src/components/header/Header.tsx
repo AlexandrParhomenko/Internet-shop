@@ -16,7 +16,6 @@ const Header = () => {
 
   const countPrice = () => {
     const ans = 0
-    console.log(amount)
     return ((itemState.reduce((acc, cur, idx) => acc + (amount[idx] * parseFloat(cur.price.split(' ')[0].replace(',', '.'))), ans).toFixed(2)) || 0) + ' ₸'
   }
   return (
