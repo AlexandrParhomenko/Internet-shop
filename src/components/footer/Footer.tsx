@@ -1,10 +1,17 @@
 import React from 'react';
+import visa from '../../images/png/Visa (1).png'
+import visa2 from '../../images/png/Visa.png'
+import telegram from '../../images/png/logos_telegram.png'
+import whatsapp from '../../images/png/Group 162.png'
+import sultan from '../../images/png/sultanwhite.png'
+import download from '../../images/png/bx_bxs-download.png'
+
 
 const Footer = () => {
   return (
       <div className='footer'>
         <div className='footer__logo-block'>
-          <img src='/sultanwhite.png' height='66' width='156' alt='sultan'/>
+          <img src={sultan.src} height='66' width='156' alt='sultan'/>
           <span style={{paddingTop: '15px', paddingBottom: '45px'}} className='footer__text'>{`Компания «Султан» — снабжаем розничные магазины товарами<br/> "под ключ" в Кокчетаве и Акмолинской области`}</span>
           <span style={{paddingBottom: '15px'}} className='footer__text small'>Подпишись на скидки и акции</span>
           <div className='email-wrapper'>
@@ -31,12 +38,12 @@ const Footer = () => {
           <span className='general-font'>Скачать прайс-лист:</span>
           <div className='yellow-btn'>
             <span className='footer__text'>Прайс-лист</span>
-            <img src='/bx_bxs-download.png' alt='frame'/>
+            <img src={download.src} alt='frame'/>
           </div>
           <span className='footer__text medium'>Связь в мессенджерах:</span>
           <div className='social-wrapper'>
-            <img src='/Group%20162.png' height='39' width='39' alt='social'/>
-            <img src='/logos_telegram.png' height='39' width='39' alt='social'/>
+            <img src={whatsapp.src} height='39' width='39' alt='social'/>
+            <img src={telegram.src} height='39' width='39' alt='social'/>
           </div>
         </div>
         <div className='contact-wrapper'>
@@ -51,8 +58,8 @@ const Footer = () => {
             <span className='footer__text small'>На связи в любое время</span>
           </div>
           <div className='social-wrapper'>
-            <img src='/Visa.png' height='39' width='61' alt='social'/>
-            <img src='/Visa%20(1).png' height='39' width='61' alt='social'/>
+            <img src={visa2.src} height='39' width='61' alt='social'/>
+            <img src={visa.src} height='39' width='61' alt='social'/>
           </div>
         </div>
 

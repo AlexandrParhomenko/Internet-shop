@@ -1,13 +1,14 @@
 import React from 'react';
 import {
-  itemSlice,
   selectAmountItemState,
   selectItemState,
-  setAmount,
-  setItemState
-} from "src/store/storeItems";
+} from "@/store/storeItems";
 import {useDispatch, useSelector} from "react-redux";
 import Link from "next/link";
+import sultan from '../../images/png/sultan.png'
+import frame from '../../images/png/Frame 125.png'
+import contact from '../../images/png/Group 100.png'
+import download from '../../images/png/bx_bxs-download.png'
 
 const Header = () => {
   const itemState = useSelector(selectItemState)
@@ -41,10 +42,10 @@ const Header = () => {
         </div>
         <div className='header__second-block'>
           <div className='header__second-block__container'>
-            <img className='logo-padding' src='/sultan.png' alt='sultan'/>
+            <img className='logo-padding' src={sultan.src} alt='sultan'/>
             <div className='yellow-btn'>
               <span className='header__text white'>Каталог</span>
-              <img src='/Frame%20125.png' alt='frame'/>
+              <img src={frame.src} alt='frame'/>
             </div>
             <div className='search-bar'>
               <span className='search-bar__text'>Поиск...</span>
@@ -57,15 +58,15 @@ const Header = () => {
               <span className='header__bottom-text'>время работы: 9:00-20:00</span>
               <span className='header__bottom-text'>Заказать звонок</span>
             </div>
-            <img className='header-padding' src='/Group%20100.png' alt='contact'/>
+            <img className='header-padding' src={contact.src} alt='contact'/>
             <div className='btn-border'>
               <div className='yellow-btn'>
                 <span className='header__text white'>Прайс-лист</span>
-                <img src='/bx_bxs-download.png' alt='frame'/>
+                <img src={download.src} alt='frame'/>
               </div>
             </div>
             <div className='cart-wrapper'>
-              <Link href='/src/pages/cart'><div className='cart'></div></Link>
+              <Link href='/cart'><div className='cart'></div></Link>
               <div className='cart-num header__text white'>{itemState.length}</div>
               <div className='cart__info'>
                 <span className='header__bottom-text'>Корзина</span>

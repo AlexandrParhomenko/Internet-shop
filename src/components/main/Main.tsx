@@ -6,13 +6,13 @@ import {
   setCurItemState,
   setItemState,
   setAmount
-} from "src/store/storeItems";
+} from "@/store/storeItems";
 import {useDispatch, useSelector} from "react-redux";
 import Link from "next/link";
+import Image from "next/image";
 
 
 const Main = () => {
-
   useEffect(() => {
     const localItemsList = localStorage.getItem('itemsList')
     setItemsList(JSON.parse(localItemsList || '').length === 0 ? [...data.products.items] : JSON.parse(localItemsList || ''))
@@ -223,7 +223,7 @@ const Main = () => {
             t++
             if ((idx >= page * 9 - 9 && idx < page * 9 && t > 9) || (t < 9 && page === 1)) {
               return <div key={idx} className='shop-items__container__item'>
-                <img className='img-wrapper' src={`/${el.img}.png`} alt='img'/>
+                <img className='img-wrapper' src={`../../images/png/${el.img}.png`} alt='img'/>
                 <span className='weight-font'>{el.weight}</span>
                 <Link onClick={() => {
                   dispatch(setCurItemState([el]))
@@ -312,7 +312,7 @@ const Main = () => {
                     setAddTypeFilter(el.careType)
                   }} className='yellow-btn'>Edit item {idx}</div>
                   <span>{`Item ${idx}`}</span>
-                  <img src={`/${el.img}.png`} alt='img' height='50' width='50'/>
+                  <Image src={`/${el.img}.png`}  alt='img' height='50' width='50'/>
                   <span>{el.code}</span>
                   <span>{el.brand}</span>
                   <span>{el.price}</span>
@@ -422,7 +422,7 @@ const Main = () => {
                   </div>
                   <div className='filters-container'>
                     <span className='aside-filters__title'>Производитель</span>
-                    <div style={{margin: 0}} className='search-bar'>
+                    <div className='search-bar'>
                       <input type='text' value={manuSearch}
                              onChange={(e) => setManuSearch(e.target.value)} placeholder='Поиск...'
                              className='search-bar__text search-input'/>
@@ -434,7 +434,7 @@ const Main = () => {
                   </div>
                   <div>
                     <span className='aside-filters__title'>Бренд</span>
-                    <div style={{margin: 0}} className='search-bar'>
+                    <div className='search-bar'>
                       <input type='text' value={brandSearch}
                              onChange={(e) => setBrandSearch(e.target.value)} placeholder='Поиск...'
                              className='search-bar__text search-input'/>

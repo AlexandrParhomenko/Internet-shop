@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
-import Header from "src/components/header/Header";
-import Footer from "src/components/footer/Footer";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 import {useDispatch, useSelector} from "react-redux";
 import {
   selectAmountItemState,
   selectCurItemState,
   selectItemState, setAmount,
   setItemState
-} from "src/store/storeItems";
+} from "@/store/storeItems";
 import Link from "next/link";
+import share from '../images/png/ci_share.png'
+import download from '../images/png/downloaddark.png'
 
 const CardPage = () => {
   const [itemAmount, setItemAmount] = useState<number>(1)
@@ -51,11 +53,11 @@ const CardPage = () => {
 
             </div>
             <div className='amount-wrapper cons'>
-              <img className='white-btn navigation' src='/ci_share.png' alt='img'/>
+              <img className='white-btn navigation' src={share.src} alt='img'/>
               <div className='white-btn weight-font blue'>При покупке от <b>10 000 ₸</b> бесплатная<br/> доставка по Кокчетаву и области</div>
               <div className='white-btn center'>
                 <span className='header__text'><b>Прайс-лист</b></span>
-                <img src='/downloaddark.png' alt='frame'/>
+                <img src={download.src} alt='frame'/>
               </div>
             </div>
             <div>

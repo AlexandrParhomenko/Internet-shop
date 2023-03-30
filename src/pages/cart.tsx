@@ -4,8 +4,10 @@ import Footer from "../components/footer/Footer";
 import {useSelector, useDispatch} from "react-redux";
 import {selectAmountItemState, selectItemState, setAmount, setItemState} from "@/store/storeItems";
 import Link from "next/link";
+import del from '../images/png/delete.png'
 
 const Cart = () => {
+  const path = '../images/png/'
 
   if (process.browser) {
     window.onbeforeunload = () => {
@@ -83,7 +85,7 @@ const Cart = () => {
                   <span
                       className='item-block__name'>{`${(amount[idx] * parseFloat(el.price.split(' ')[0].replace(',', '.'))).toFixed(2)} ₸`}</span>
                   <div onClick={() => handleDelete(idx)} className='page'>
-                    <img src='/delete.png' alt='img'/>
+                    <img src={del.src} alt='img'/>
                   </div>
                 </div>
               </div>)}
