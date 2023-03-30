@@ -10,7 +10,9 @@ import {
 import {useDispatch, useSelector} from "react-redux";
 import Link from "next/link";
 import Image from "next/image";
-
+import image21 from '../../images/png/image21.png'
+import image22 from '../../images/png/image22.png'
+import image3 from '../../images/png/image3.png'
 
 const Main = () => {
   useEffect(() => {
@@ -64,7 +66,6 @@ const Main = () => {
   const itemState = useSelector(selectItemState)
   const amount = useSelector(selectAmountItemState)
   const dispatch = useDispatch()
-
 
 
   const getManufacturers = () => {
@@ -223,7 +224,9 @@ const Main = () => {
             t++
             if ((idx >= page * 9 - 9 && idx < page * 9 && t > 9) || (t < 9 && page === 1)) {
               return <div key={idx} className='shop-items__container__item'>
-                <img className='img-wrapper' src={`../../images/png/${el.img}.png`} alt='img'/>
+                <Image className='img-wrapper' src={el.img === `image21`
+                    ? image21 : el.img === `image22`
+                        ? image22 : image3} height={100} width={100} alt='img'/>
                 <span className='weight-font'>{el.weight}</span>
                 <Link onClick={() => {
                   dispatch(setCurItemState([el]))
@@ -262,7 +265,9 @@ const Main = () => {
     }) : itemsList.sort(eval(setSort()!)).map((el, idx) => {
       if (idx >= page * 9 - 9 && idx < page * 9)
         return <div key={idx} className='shop-items__container__item'>
-          <img className='img-wrapper' src={`/${el.img}.png`} alt='img'/>
+          <Image height={100} width={100} className='img-wrapper' src={el.img === `image21`
+              ? image21 : el.img === `image22`
+                  ? image22 : image3} alt='img'/>
           <span className='weight-font'>{el.weight}</span>
           <Link onClick={() => {
             dispatch(setCurItemState([el]))
@@ -312,7 +317,9 @@ const Main = () => {
                     setAddTypeFilter(el.careType)
                   }} className='yellow-btn'>Edit item {idx}</div>
                   <span>{`Item ${idx}`}</span>
-                  <Image src={`/${el.img}.png`}  alt='img' height='50' width='50'/>
+                  <Image className='img-wrapper' src={el.img === `image21`
+                      ? image21 : el.img === `image22`
+                          ? image22 : image3} height={100} width={100} alt='img'/>
                   <span>{el.code}</span>
                   <span>{el.brand}</span>
                   <span>{el.price}</span>

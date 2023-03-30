@@ -11,6 +11,10 @@ import {
 import Link from "next/link";
 import share from '../images/png/ci_share.png'
 import download from '../images/png/downloaddark.png'
+import image21 from '../images/png/image21.png'
+import image22 from '../images/png/image22.png'
+import image3 from '../images/png/image3.png'
+import Image from "next/image";
 
 const CardPage = () => {
   const [itemAmount, setItemAmount] = useState<number>(1)
@@ -32,7 +36,9 @@ const CardPage = () => {
         </div>
         <div className='item-block'>
 
-          <img className='img' src={`/${curItemState[0].img}.png`} alt='img'/>
+          <Image src={curItemState[0].img === `image21`
+              ? image21 : curItemState[0].img === `image22`
+                  ? image22 : image3} alt='img'/>
           <div className='item-block__description'>
             <span className='weight-font name-font green'>В наличии</span>
             <span className='item-block__name'>{curItemState[0].name}</span>
