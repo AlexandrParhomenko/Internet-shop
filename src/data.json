@@ -1,0 +1,247 @@
+{
+  "products": {
+    "items": [
+      {
+        "img": "image21",
+        "manufacturer": "Нэфис",
+        "weight": "450 мл",
+        "name": "AOS средство для мытья посуды Crystal",
+        "code": "4604049097548",
+        "brand": "AOS",
+        "price": "101,25 ₸",
+        "careType": [
+          "Гигиеническая продукция"
+        ]
+      },
+      {
+        "img": "image22",
+        "manufacturer": "Fairy",
+        "weight": "15X28.8 г",
+        "name": "ARIEL Автмат Гель СМС жидкое \nв растворимых капсулах Liquid Capsules Горный родник",
+        "code": "1845678901001",
+        "brand": "Nivea",
+        "price": "53,20 ₸",
+        "careType": [
+          "Гигиеническая продукция"
+        ]
+      },
+      {
+        "img": "image3",
+        "manufacturer": "Grant",
+        "weight": "1500 г",
+        "name": "BIMAX Порошок стиральный Автомат 100 пятен COMPACT",
+        "code": "1938157517318",
+        "brand": "GRIFON",
+        "price": "48,76 ₸",
+        "careType": [
+          "Гигиеническая продукция"
+        ]
+      },
+      {
+        "img": "image21",
+        "manufacturer": "Mr.Proper",
+        "weight": "400 мл",
+        "name": "Mr. Proper Моющее средство",
+        "code": "7152369387531",
+        "brand": "Домашний сундук",
+        "price": "96,60 ₸",
+        "careType": [
+          "Гигиеническая продукция",
+          "Уход за руками"
+        ]
+      },
+      {
+        "img": "image22",
+        "manufacturer": "Чистюля",
+        "weight": "100 мл",
+        "name": "Натуральный крем для рук Увлажнение и защита BIOHELPY",
+        "code": "5545415583957",
+        "brand": "HELP",
+        "price": "679,22 ₸",
+        "careType": [
+          "Уход за руками",
+          "Уход за лицом"
+        ]
+      },
+      {
+        "img": "image3",
+        "manufacturer": "perfume",
+        "weight": "1500 г",
+        "name": "Маска для лица Skin Tune",
+        "code": "2432955272741",
+        "brand": "Schwarzkopf",
+        "price": "154 ₸",
+        "careType": [
+          "Уход за лицом"
+        ]
+      },
+      {
+        "img": "image21",
+        "manufacturer": "CheerBox",
+        "weight": "110 мл",
+        "name": "Крем для ног Cafe Mimi",
+        "code": "2432955272742",
+        "brand": "Pride",
+        "price": "99,99 ₸",
+        "careType": [
+          "Уход за ногами"
+        ]
+      },
+      {
+        "img": "image22",
+        "manufacturer": "Мэва",
+        "weight": "400 мл",
+        "name": "Шампунь TRESemme Repair & Protect Восстанавливающий",
+        "code": "6667933692118",
+        "brand": "Brandon",
+        "price": "61,99 ₸",
+        "careType": [
+          "Уход за волосами"
+        ]
+      },
+      {
+        "img": "image3",
+        "manufacturer": "Boyscout",
+        "weight": "500 г",
+        "name": "Подарочный набор косметики № 10 Himalaya для очищения и питания кожи",
+        "code": "1582672525214",
+        "brand": "Ariel",
+        "price": "335,10 ₸",
+        "careType": [
+          "Подарочные наборы",
+          "Уход за волосами",
+          "Уход за руками",
+          "Уход за лицом"
+        ]
+      },
+      {
+        "img": "image21",
+        "manufacturer": "Нэфис",
+        "weight": "450 мл",
+        "name": "AOS средство для мытья посуды Crystal",
+        "code": "4604049097549",
+        "brand": "AOS",
+        "price": "101,25 ₸",
+        "careType": [
+          "Гигиеническая продукция"
+        ]
+      },
+      {
+        "img": "image22",
+        "manufacturer": "Fairy",
+        "weight": "15X28.8 г",
+        "name": "ARIEL Автмат Гель СМС жидкое \nв растворимых капсулах Liquid Capsules Горный родник",
+        "code": "1845678901002",
+        "brand": "Nivea",
+        "price": "53,20 ₸",
+        "careType": [
+          "Гигиеническая продукция"
+        ]
+      },
+      {
+        "img": "image3",
+        "manufacturer": "Grant",
+        "weight": "1500 г",
+        "name": "BIMAX Порошок стиральный Автомат 100 пятен COMPACT",
+        "code": "1938157517319",
+        "brand": "GRIFON",
+        "price": "48,76 ₸",
+        "careType": [
+          "Гигиеническая продукция"
+        ]
+      },
+      {
+        "img": "image21",
+        "manufacturer": "Mr.Proper",
+        "weight": "400 мл",
+        "name": "Mr. Proper Моющее средство",
+        "code": "7152369387532",
+        "brand": "Домашний сундук",
+        "price": "96,60 ₸",
+        "careType": [
+          "Гигиеническая продукция",
+          "Уход за руками"
+        ]
+      },
+      {
+        "img": "image22",
+        "manufacturer": "Чистюля",
+        "weight": "100 мл",
+        "name": "Натуральный крем для рук Увлажнение и защита BIOHELPY",
+        "code": "5545415583958",
+        "brand": "HELP",
+        "price": "679,22 ₸",
+        "careType": [
+          "Уход за руками",
+          "Уход за лицом"
+        ]
+      },
+      {
+        "img": "image3",
+        "manufacturer": "perfume",
+        "weight": "1500 г",
+        "name": "Маска для лица Skin Tune",
+        "code": "2432955272742",
+        "brand": "Schwarzkopf",
+        "price": "154 ₸",
+        "careType": [
+          "Уход за лицом"
+        ]
+      },
+      {
+        "img": "image21",
+        "manufacturer": "CheerBox",
+        "weight": "110 мл",
+        "name": "Крем для ног Cafe Mimi",
+        "code": "2432955272743",
+        "brand": "Pride",
+        "price": "99,99 ₸",
+        "careType": [
+          "Уход за ногами"
+        ]
+      },
+      {
+        "img": "image22",
+        "manufacturer": "Мэва",
+        "weight": "400 мл",
+        "name": "Шампунь TRESemme Repair & Protect Восстанавливающий",
+        "code": "6667933692119",
+        "brand": "Brandon",
+        "price": "61,99 ₸",
+        "careType": [
+          "Уход за волосами"
+        ]
+      },
+      {
+        "img": "image3",
+        "manufacturer": "Boyscout",
+        "weight": "500 г",
+        "name": "Подарочный набор косметики № 10 Himalaya для очищения и питания кожи",
+        "code": "1582672525215",
+        "brand": "Ariel",
+        "price": "335,10 ₸",
+        "careType": [
+          "Подарочные наборы",
+          "Уход за волосами",
+          "Уход за руками",
+          "Уход за лицом"
+        ]
+      },
+      {
+        "img": "image3",
+        "manufacturer": "sdasadsadasddas",
+        "weight": "500 г",
+        "name": "Подарочный набор № 12 Himalaya для очищения и питания кожи",
+        "code": "158212672525218",
+        "brand": "Ariel",
+        "price": "335,10 ₸",
+        "careType": [
+          "Подарочные наборы",
+          "Уход за волосами",
+          "Уход за руками",
+          "Уход за лицом"
+        ]
+      }
+    ]
+  }
+}
