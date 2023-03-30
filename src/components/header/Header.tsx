@@ -5,7 +5,7 @@ import {
   selectItemState,
   setAmount,
   setItemState
-} from "@/store/storeItems";
+} from "src/store/storeItems";
 import {useDispatch, useSelector} from "react-redux";
 import Link from "next/link";
 
@@ -65,7 +65,7 @@ const Header = () => {
               </div>
             </div>
             <div className='cart-wrapper'>
-              <Link href='/cart'><div className='cart'></div></Link>
+              <Link href='/src/pages/cart'><div className='cart'></div></Link>
               <div className='cart-num header__text white'>{itemState.length}</div>
               <div className='cart__info'>
                 <span className='header__bottom-text'>Корзина</span>

@@ -1,11 +1,11 @@
-import '@/styles/globals.scss'
+import 'src/styles/globals.scss'
 import '../components/header/header.scss'
 import '../components/main/main.scss'
 import '../components/footer/footer.scss'
 import type {AppProps} from 'next/app'
-import {wrapper} from "@/store/store";
+import {wrapper} from "src/store/store";
 import {useEffect} from "react";
-import {setAmount, setItemState} from "@/store/storeItems";
+import {setAmount, setItemState} from "src/store/storeItems";
 import {useDispatch} from "react-redux";
 
 function App({Component, pageProps}: AppProps) {

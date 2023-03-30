@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
+import Header from "src/components/header/Header";
+import Footer from "src/components/footer/Footer";
 import {useDispatch, useSelector} from "react-redux";
 import {
   selectAmountItemState,
   selectCurItemState,
   selectItemState, setAmount,
   setItemState
-} from "@/store/storeItems";
+} from "src/store/storeItems";
 import Link from "next/link";
 
 const CardPage = () => {

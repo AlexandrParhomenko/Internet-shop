@@ -6,7 +6,7 @@ import {
   setCurItemState,
   setItemState,
   setAmount
-} from "@/store/storeItems";
+} from "src/store/storeItems";
 import {useDispatch, useSelector} from "react-redux";
 import Link from "next/link";
 

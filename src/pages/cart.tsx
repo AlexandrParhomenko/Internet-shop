@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
+import Header from "src/components/header/Header";
+import Footer from "src/components/footer/Footer";
 import {useSelector, useDispatch} from "react-redux";
-import {selectAmountItemState, selectItemState, setAmount, setItemState} from "@/store/storeItems";
+import {selectAmountItemState, selectItemState, setAmount, setItemState} from "src/store/storeItems";
 import Link from "next/link";
 
 const Cart = () => {
