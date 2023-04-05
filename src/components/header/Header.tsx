@@ -1,19 +1,31 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   selectAmountItemState,
-  selectItemState,
+  selectItemState, setAmount, setItemState,
 } from "@/store/storeItems";
 import {useDispatch, useSelector} from "react-redux";
 import Link from "next/link";
 import sultan from '../../images/png/sultan.png'
-import frame from '../../images/png/Frame 125.png'
-import contact from '../../images/png/Group 100.png'
+import frame from '../../images/png/grid.png'
+import contact from '../../images/png/contact.png'
 import download from '../../images/png/bx_bxs-download.png'
 
 const Header = () => {
   const itemState = useSelector(selectItemState)
   const amount = useSelector(selectAmountItemState)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    const localItemState = localStorage.getItem('itemState')
+    const localAmount = localStorage.getItem('amount')
+    if (localItemState) {
+      dispatch(setItemState(JSON.parse(localItemState)))
+    }
+    if (localAmount) {
+      dispatch(setAmount(JSON.parse(localAmount)))
+
+    }
+  }, [])
 
   const countPrice = () => {
     const ans = 0
@@ -66,11 +78,14 @@ const Header = () => {
               </div>
             </div>
             <div className='cart-wrapper'>
-              <Link href='/cart'><div className='cart'></div></Link>
-              <div className='cart-num header__text white'>{itemState.length}</div>
+              <Link href='/cart'>
+                <div className='cart'></div>
+              </Link>
+              <div data-testid='cart-length'
+                   className='cart-num header__text white'>{itemState.length}</div>
               <div className='cart__info'>
                 <span className='header__bottom-text'>Корзина</span>
-                <span className='header__text'>{countPrice()}</span>
+                <span data-testid='price' className='header__text'>{countPrice()}</span>
               </div>
             </div>
           </div>

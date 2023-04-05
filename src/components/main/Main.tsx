@@ -15,18 +15,7 @@ import image22 from '../../images/png/image22.png'
 import image3 from '../../images/png/image3.png'
 
 const Main = () => {
-  useEffect(() => {
-    const localItemsList = localStorage.getItem('itemsList')
-    setItemsList(JSON.parse(localItemsList || '').length === 0 ? [...data.products.items] : JSON.parse(localItemsList || ''))
-  }, [])
 
-  if (process.browser) {
-    window.onbeforeunload = () => {
-      localStorage.setItem('itemsList', JSON.stringify(itemsList));
-      localStorage.setItem('amount', JSON.stringify(amount));
-      localStorage.setItem('itemState', JSON.stringify(itemState));
-    }
-  }
   const [addImg, setAddImg] = useState<string>('')
   const [addCode, setAddCode] = useState<string>('')
   const [addBrand, setAddBrand] = useState<string>('')
@@ -63,6 +52,20 @@ const Main = () => {
     'Гигиена полости рта',
     'Бумажная продукция'
   ]
+  useEffect(() => {
+    const localItemsList = localStorage.getItem('itemsList')
+    if (localItemsList) {
+      setItemsList(JSON.parse(localItemsList).length === 0 ? [...data.products.items] : JSON.parse(localItemsList))
+    }
+  }, [])
+
+  if (process.browser) {
+    window.onbeforeunload = () => {
+      localStorage.setItem('itemsList', JSON.stringify(itemsList));
+      localStorage.setItem('amount', JSON.stringify(amount));
+      localStorage.setItem('itemState', JSON.stringify(itemState));
+    }
+  }
   const itemState = useSelector(selectItemState)
   const amount = useSelector(selectAmountItemState)
   const dispatch = useDispatch()
@@ -264,7 +267,7 @@ const Main = () => {
       }
     }) : itemsList.sort(eval(setSort()!)).map((el, idx) => {
       if (idx >= page * 9 - 9 && idx < page * 9)
-        return <div key={idx} className='shop-items__container__item'>
+        return <div data-testid='some-testId' key={idx} className='shop-items__container__item'>
           <Image height={100} width={100} className='img-wrapper' src={el.img === `image21`
               ? image21 : el.img === `image22`
                   ? image22 : image3} alt='img'/>

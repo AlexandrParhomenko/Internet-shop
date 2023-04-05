@@ -18,8 +18,6 @@ function App({Component, pageProps}: AppProps) {
     dispatch(setItemState(JSON.parse(localItemState || '')))
     dispatch(setAmount(JSON.parse(localAmount || '')))
   }, [])
-
-
   return <Component {...pageProps} />
 }
 

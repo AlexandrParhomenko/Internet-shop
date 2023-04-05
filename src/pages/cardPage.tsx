@@ -23,8 +23,6 @@ const CardPage = () => {
   const amount = useSelector(selectAmountItemState)
   const dispatch = useDispatch()
 
-
-
   return (
       <div>
       <Header/>
