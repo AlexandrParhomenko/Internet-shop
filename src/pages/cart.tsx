@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import {useSelector, useDispatch} from "react-redux";
-import {selectAmountItemState, selectItemState, setAmount, setItemState} from "@/store/storeItems";
+import {selectAmountItemState, selectCartItemState, setAmount, setCartItemState} from "@/store/storeItems";
 import Link from "next/link";
 import del from '../images/png/delete.png'
 import image21 from '../images/png/image21.png'
@@ -11,7 +11,6 @@ import image3 from '../images/png/image3.png'
 import Image from "next/image";
 
 const Cart = () => {
-  const path = '../images/png/'
 
   if (process.browser) {
     window.onbeforeunload = () => {
@@ -20,7 +19,7 @@ const Cart = () => {
     }
   }
 
-  const itemState = useSelector(selectItemState)
+  const itemState = useSelector(selectCartItemState)
   const dispatch = useDispatch()
   const [orderComplete, setOrderComplete] = useState<boolean>(false)
   const amount = useSelector(selectAmountItemState)
@@ -31,7 +30,7 @@ const Cart = () => {
     arr.splice(idx, 1)
     amountArr.splice(idx, 1)
     dispatch(setAmount(amountArr))
-    dispatch(setItemState(arr))
+    dispatch(setCartItemState(arr))
   }
 
   const countPrice = () => {
@@ -42,7 +41,7 @@ const Cart = () => {
   const claimOrder = () => {
     if (itemState.length !== 0) {
       setOrderComplete(true);
-      dispatch(setItemState([]))
+      dispatch(setCartItemState([]))
       dispatch(setAmount([]))
     }
   }

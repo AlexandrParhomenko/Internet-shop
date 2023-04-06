@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import data from '../../data.json';
 import {
   selectAmountItemState,
-  selectItemState,
+  selectCartItemState,
   setCurItemState,
-  setItemState,
+  setCartItemState,
   setAmount
 } from "@/store/storeItems";
 import {useDispatch, useSelector} from "react-redux";
@@ -66,7 +66,7 @@ const Main = () => {
       localStorage.setItem('itemState', JSON.stringify(itemState));
     }
   }
-  const itemState = useSelector(selectItemState)
+  const itemState = useSelector(selectCartItemState)
   const amount = useSelector(selectAmountItemState)
   const dispatch = useDispatch()
 
@@ -187,7 +187,7 @@ const Main = () => {
             </div>
         }) : getManufacturers().map((el, idx) =>
             <div key={idx} className='checkbox-wrapper'>
-              <input onChange={() => checkboxHandler(el)} type='checkbox'/>
+              <input data-testid={`${idx}-box`} onChange={() => checkboxHandler(el)} type='checkbox'/>
               <span className='weight-font name-font'>{el}</span>
             </div>)
   }
@@ -252,8 +252,8 @@ const Main = () => {
                 </div>
                 <div className='price-wrapper'>
                   <span className='main-text price-font'>{el.price}</span>
-                  <div onClick={() => {
-                    dispatch(setItemState([...itemState, el]))
+                  <div  onClick={() => {
+                    dispatch(setCartItemState([...itemState, el]))
                     dispatch(setAmount([...amount, 1]))
                   }}
                        className={itemState.some(ele => ele.code === el.code) ? 'cart-btn active-cart' : 'cart-btn'}>
@@ -267,7 +267,7 @@ const Main = () => {
       }
     }) : itemsList.sort(eval(setSort()!)).map((el, idx) => {
       if (idx >= page * 9 - 9 && idx < page * 9)
-        return <div data-testid='some-testId' key={idx} className='shop-items__container__item'>
+        return <div key={idx} className='shop-items__container__item'>
           <Image height={100} width={100} className='img-wrapper' src={el.img === `image21`
               ? image21 : el.img === `image22`
                   ? image22 : image3} alt='img'/>
@@ -293,8 +293,8 @@ const Main = () => {
           </div>
           <div className='price-wrapper'>
             <span className='main-text price-font'>{el.price}</span>
-            <div onClick={() => {
-              dispatch(setItemState([...itemState, el]))
+            <div data-testid={`${idx}`} onClick={() => {
+              dispatch(setCartItemState([...itemState, el]))
               dispatch(setAmount([...amount, 1]))
             }}
                  className={itemState.some(ele => ele.code === el.code) ? 'cart-btn active-cart' : 'cart-btn'}>
@@ -401,11 +401,11 @@ const Main = () => {
                 <span className='main__content__title'>Косметика и гигиена</span>
                 <div>
                   <span className='sort-font'>Сортировка: </span>
-                  <select onChange={(e) => setSortSelect(parseInt(e.target.value))}
+                  <select data-testid='sort' onChange={(e) => setSortSelect(parseInt(e.target.value))}
                           className='select'>
                     <option value='0'>По названию(А-Я)</option>
                     <option value='1'>По названию(Я-А)</option>
-                    <option value='2'>Сначала дорогие</option>
+                    <option data-testid='sort-btn' value='2'>Сначала дорогие</option>
                     <option value='3'>Сначала недорогие</option>
                   </select>
                 </div>
@@ -455,7 +455,7 @@ const Main = () => {
                     </div>
                   </div>
                   <div className='filters-block'>
-                    <div onClick={() => setShowFilter(true)} className='yellow-btn'>
+                    <div data-testid='show-button' onClick={() => setShowFilter(true)} className='yellow-btn'>
                       <span className='footer__text'>Показать</span>
                     </div>
                     <div onClick={() => removeFilters()} className='delete-block'></div>

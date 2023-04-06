@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {
   selectAmountItemState,
-  selectItemState, setAmount, setItemState,
+  selectCartItemState, setAmount, setCartItemState,
 } from "@/store/storeItems";
 import {useDispatch, useSelector} from "react-redux";
 import Link from "next/link";
@@ -11,21 +11,9 @@ import contact from '../../images/png/contact.png'
 import download from '../../images/png/bx_bxs-download.png'
 
 const Header = () => {
-  const itemState = useSelector(selectItemState)
+  const itemState = useSelector(selectCartItemState)
   const amount = useSelector(selectAmountItemState)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    const localItemState = localStorage.getItem('itemState')
-    const localAmount = localStorage.getItem('amount')
-    if (localItemState) {
-      dispatch(setItemState(JSON.parse(localItemState)))
-    }
-    if (localAmount) {
-      dispatch(setAmount(JSON.parse(localAmount)))
-
-    }
-  }, [])
 
   const countPrice = () => {
     const ans = 0

@@ -5,13 +5,13 @@ import data from "../data.json"
 
 export interface CartItem {
   cartItem: dataItem[];
-  curCartItem: dataItem[];
+  pickedItem: dataItem;
   amount: number[]
 }
 
 const initialState: CartItem = {
   cartItem: [],
-  curCartItem: [data.products.items[0]],
+  pickedItem: data.products.items[0],
   amount: []
 };
 
@@ -22,11 +22,11 @@ export const itemSlice = createSlice({
   name: "item",
   initialState,
   reducers: {
-    setItemState(state, action) {
+    setCartItemState(state, action) {
       state.cartItem = action.payload;
     },
     setCurItemState(state, action) {
-      state.curCartItem = action.payload;
+      state.pickedItem = action.payload;
     },
     setAmount(state, action) {
       state.amount = action.payload;
@@ -46,10 +46,10 @@ export const itemSlice = createSlice({
 });
 
 
-export const { setItemState, setCurItemState, setAmount } = itemSlice.actions;
+export const { setCartItemState, setCurItemState, setAmount } = itemSlice.actions;
 
-export const selectItemState = (state: AppState) => state.item.cartItem;
-export const selectCurItemState = (state: AppState) => state.item.curCartItem;
+export const selectCartItemState = (state: AppState) => state.item.cartItem;
+export const selectCurItemState = (state: AppState) => state.item.pickedItem;
 export const selectAmountItemState = (state: AppState) => state.item.amount;
 
 
