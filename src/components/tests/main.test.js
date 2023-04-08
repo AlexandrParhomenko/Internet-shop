@@ -1,14 +1,11 @@
 import Main from "../main/Main";
-import {fireEvent, getByTestId, render, screen} from "@testing-library/react";
+import {fireEvent, render, screen} from "@testing-library/react";
 import {useSelector} from "react-redux";
 import "@testing-library/jest-dom"
 import React from "react";
 import Header from "../header/Header";
-import {selectAmountItemState} from "../../store/storeItems";
 import * as reduxHooks from 'react-redux'
-import Cart from "../../pages/cart";
 import CardPage from "../../pages/cardPage";
-import data from "../../data.json"
 
 
 jest.mock("react-redux")
