@@ -5,7 +5,7 @@ import '../components/footer/footer.scss'
 import type {AppProps} from 'next/app'
 import {wrapper} from "@/store/store";
 import {useEffect} from "react";
-import {setAmount, setItemState} from "@/store/storeItems";
+import {setAmount, setCartItemState} from "@/store/storeItems";
 import {useDispatch} from "react-redux";
 
 function App({Component, pageProps}: AppProps) {
@@ -14,12 +14,13 @@ function App({Component, pageProps}: AppProps) {
   useEffect(() => {
     const localItemState = localStorage.getItem('itemState')
     const localAmount = localStorage.getItem('amount')
-
-    dispatch(setItemState(JSON.parse(localItemState || '')))
-    dispatch(setAmount(JSON.parse(localAmount || '')))
+    if (localItemState) {
+      dispatch(setCartItemState(JSON.parse(localItemState)))
+    }
+    if (localAmount) {
+      dispatch(setAmount(JSON.parse(localAmount)))
+    }
   }, [])
-
-
   return <Component {...pageProps} />
 }
 

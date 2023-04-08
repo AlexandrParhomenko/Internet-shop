@@ -1,8 +1,8 @@
 import React from 'react';
-import visa from '../../images/png/Visa (1).png'
+import visa from '../../images/png/mastercard.png'
 import visa2 from '../../images/png/Visa.png'
 import telegram from '../../images/png/logos_telegram.png'
-import whatsapp from '../../images/png/Group 162.png'
+import whatsapp from '../../images/png/whatsapp.png'
 import sultan from '../../images/png/sultanwhite.png'
 import download from '../../images/png/bx_bxs-download.png'
 
@@ -20,41 +20,41 @@ const Footer = () => {
           </div>
         </div>
         <div className='menu-wrapper'>
-          <span className='general-font'>Меню сайта:</span>
-          <span className='footer__text medium'>О компании</span>
-          <span className='footer__text medium'>Доставка и оплата</span>
-          <span className='footer__text medium'>Возврат</span>
-          <span className='footer__text medium'>Контакты</span>
+          <span className='bold-font'>Меню сайта:</span>
+          <span className='footer__text medium-font'>О компании</span>
+          <span className='footer__text medium-font'>Доставка и оплата</span>
+          <span className='footer__text medium-font'>Возврат</span>
+          <span className='footer__text medium-font'>Контакты</span>
         </div>
         <div className='menu-wrapper'>
-          <span className='general-font'>Категории:</span>
-          <span className='footer__text medium'>Бытовая химия</span>
-          <span className='footer__text medium'>Косметика и гигиена</span>
-          <span className='footer__text medium'>Товары для дома</span>
-          <span className='footer__text medium'>Товары для детей и мам</span>
-          <span className='footer__text medium'>Посуда</span>
+          <span className='bold-font'>Категории:</span>
+          <span className='footer__text medium-font'>Бытовая химия</span>
+          <span className='footer__text medium-font'>Косметика и гигиена</span>
+          <span className='footer__text medium-font'>Товары для дома</span>
+          <span className='footer__text medium-font'>Товары для детей и мам</span>
+          <span className='footer__text medium-font'>Посуда</span>
         </div>
         <div className='menu-wrapper'>
-          <span className='general-font'>Скачать прайс-лист:</span>
+          <span className='bold-font'>Скачать прайс-лист:</span>
           <div className='yellow-btn'>
             <span className='footer__text'>Прайс-лист</span>
             <img src={download.src} alt='frame'/>
           </div>
-          <span className='footer__text medium'>Связь в мессенджерах:</span>
+          <span className='footer__text medium-font'>Связь в мессенджерах:</span>
           <div className='social-wrapper'>
             <img src={whatsapp.src} height='39' width='39' alt='social'/>
             <img src={telegram.src} height='39' width='39' alt='social'/>
           </div>
         </div>
         <div className='contact-wrapper'>
-          <span className='general-font'>Контакты:</span>
+          <span className='bold-font'>Контакты:</span>
           <div className='contact-wrapper__block'>
-            <span className='general-font medium'>+7 (777) 490-00-91</span>
+            <span className='bold-font medium-font'>+7 (777) 490-00-91</span>
             <span className='footer__text small'>время работы: 9:00-20:00</span>
             <span className='footer__text underline'>Заказать звонок</span>
           </div>
           <div className='contact-wrapper__mail'>
-            <span className='general-font medium'>opt.sultan@mail.ru</span>
+            <span className='bold-font medium-font'>opt.sultan@mail.ru</span>
             <span className='footer__text small'>На связи в любое время</span>
           </div>
           <div className='social-wrapper'>
